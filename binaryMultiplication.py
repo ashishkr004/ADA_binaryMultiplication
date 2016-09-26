@@ -59,20 +59,30 @@ def karatsubaMultiplication(x,y):
 		firstTerm=ac
 
 		# third term
-		thirdTerm = karatsubaMultiplication(int(bd),bin(2**(2*((len(str(x))+1)/2)))[2:])
-		
+		thirdTerm=bd
+
+		# shifting of third term
+		i=len(str((bin(2**(2*((len(str(x))+1)/2)))[2:])))-1
+		shiftedThirdTerm=str(thirdTerm)
+		while i>0:
+			shiftedThirdTerm=shiftedThirdTerm+'0'
+			i=i-1
+			pass
+
 		abcd = karatsubaMultiplication(int(ab),int(cd))
 
 		# second term
 		secondTerm = bin(int(str(abcd),2)-int(bin(int(str(ac),2)+int(str(bd),2))[2:],2))[2:]
+		
+		# shifting of second term
 		j = len(str(bin(2**((len(str(x))+1)/2))[2:]))-1
-		second=str(secondTerm)
+		shiftedSecondTerm=str(secondTerm)
 		while j>0:
-			second=second+'0'
+			shiftedSecondTerm=shiftedSecondTerm+'0'
 			j=j-1
 			pass
 
-		return bin(int(bin(int(str(firstTerm),2)+int(str(second),2)),2)+ int(str(thirdTerm),2))[2:]
+		return bin(int(bin(int(str(firstTerm),2)+int(str(shiftedSecondTerm),2)),2)+ int(str(shiftedThirdTerm),2))[2:]
 
 
 output1=longMultiplication(a,b)
@@ -85,20 +95,6 @@ g.write(output1)
 
 g = open("output_KM.txt","w")
 g.write(output2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
